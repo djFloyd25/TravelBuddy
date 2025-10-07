@@ -1,59 +1,32 @@
 "use client";
 import Navbar from "@/components/navbar";
-import LiquidEther from "@/styles/LiquidEther";
-import BlurText from "@/styles/BlurText";
+import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
 
 
 
 export default function Home() {
 
-  const handleAnimationComplete = () => {
-    console.log('Animation completed!');
-  };
-
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden">
-      {/* Background animation */}
-      <div className="absolute inset-0 -z-10">
-        <LiquidEther
-          colors={['#755bff', '#ffb3fc', '#c7b7ff']}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
+    <main className="relative flex flex-col items-stretch overflow-hidden">
+      {/* Hero wrapper with background behind navbar + hero only */}
+      <div
+        className="relative min-h-screen bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/background.jpg')",
+        }}
+      >
+        <Navbar />
+        <Hero
+          heading="Welcome to Travel Buddy"
+          subheading="Connecting people through meaningful journeys."
+          images={["/globe.svg", "/window.svg", "/file.svg", "/vercel.svg", "/next.svg"]}
         />
       </div>
 
-      {/* Foreground content */}
-      <Navbar />
-      <section className="flex flex-col items-center justify-center flex-grow text-white">
-        <BlurText
-          text="Welcome to Travel Buddy"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="text-5xl font-bold mb-4"
-        />
-        <BlurText
-          text="Connecting people through meaningful journeys."
-          delay={300}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="text-lg opacity-90"
-        />
-      </section>
+      {/* Following sections have their own backgrounds */}
+      <HowItWorks />
     </main>
   );
 }
