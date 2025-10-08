@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         {/* Right: Call to Action */}
         <div className="flex items-center justify-self-end">
           <Link
-            href="/start-trip"
+            href="/login"
             className="inline-flex items-center rounded-sm bg-[#ff3700] text-white px-3 sm:px-4 py-2 text-sm font-semibold hover:opacity-90 transition-colors"
             aria-label="Start a trip"
           >
