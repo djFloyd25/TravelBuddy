@@ -1,7 +1,11 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { useAuth } from '@/lib/auth-context';
 
 const Navbar: React.FC = () => {
+  const { user, session, loading } = useAuth();
+
   return (
     <nav className="w-full px-4 sm:px-6 lg:px-10 py-4 bg-transparent shadow-none text-white">
       <div className="mx-auto w-full max-w-screen-2xl grid grid-cols-3 items-center">
@@ -25,7 +29,7 @@ const Navbar: React.FC = () => {
         {/* Right: Call to Action */}
         <div className="flex items-center justify-self-end">
           <Link
-            href="/login"
+            href={session ? "/dashboard" : "/login"}
             className="inline-flex items-center rounded-sm bg-[#ff3700] text-white px-3 sm:px-4 py-2 text-sm font-semibold hover:opacity-90 transition-colors"
             aria-label="Start a trip"
           >

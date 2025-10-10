@@ -13,7 +13,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/dist/client/link";
 
-export function SignupCard() {
+interface SignupCardProps {
+  email: string;
+  setEmail: (email: string) => void;
+  password: string;
+  setPassword: (password: string) => void;
+  onSubmit: (e: React.FormEvent) => void;
+}
+
+export function SignupCard({ email, setEmail, password, setPassword, onSubmit }: SignupCardProps) {
+  
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
@@ -28,7 +37,7 @@ export function SignupCard() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -36,6 +45,8 @@ export function SignupCard() {
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -49,19 +60,25 @@ export function SignupCard() {
                   Forgot your password?
                 </a>
               </div>
-              <Input id="password" type="password" required />
+              <Input 
+                id="password" 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required 
+              />
             </div>
+          </div>
+          <div className="flex flex-col gap-2 mt-6">
+            <Button type="submit" className="w-full">
+              Sign Up
+            </Button>
+            <Button variant="outline" className="w-full" type="button">
+              Sign Up with Google
+            </Button>
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Sign Up
-        </Button>
-        <Button variant="outline" className="w-full">
-          Sign Up with Google
-        </Button>
-      </CardFooter>
     </Card>
   )
 }

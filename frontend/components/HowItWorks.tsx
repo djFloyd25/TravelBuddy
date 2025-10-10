@@ -16,7 +16,7 @@ const defaultSteps: Step[] = [
   {
     title: "Plan your trip",
     description:
-      "Tell us where you're going and what you love. We’ll craft a personalized itinerary in minutes.",
+      "Create a trip, add users, and take surveys to gather preferences and interests.",
     image: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
